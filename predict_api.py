@@ -89,7 +89,7 @@ def video_feed():
 if __name__ == '__main__':
     # Input arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model','--weights', type=str, default=ROOT / 'yolov8s.pt', help='model path or triton URL')
+    parser.add_argument('--model','--weights', type=str, default=ROOT / 'best.pt', help='model path or triton URL')
     parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='source directory for images or videos')
     parser.add_argument('--conf','--conf-thres', type=float, default=0.25, help='object confidence threshold for detection')
     parser.add_argument('--iou', '--iou-thres', type=float, default=0.7, help='intersection over union (IoU) threshold for NMS')
@@ -137,5 +137,5 @@ if __name__ == '__main__':
     model = YOLO(str(opt.model))
 
     # Run app
-    app.run(host='0.0.0.0', port=port, debug=False) # Don't use debug=True, model will be loaded twice (https://stackoverflow.com/questions/26958952/python-program-seems-to-be-running-twice)
-    
+    # app.run(host='0.0.0.0', port=port, debug=False) # Don't use debug=True, model will be loaded twice (https://stackoverflow.com/questions/26958952/python-program-seems-to-be-running-twice)
+    app.run(host='0.0.0.0', port=5001, debug=False)
